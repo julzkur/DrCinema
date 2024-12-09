@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import styles from "./styles";
 
-const CinemaDetail: React.FC<{ navigation: any }> = ({ navigation }) => {
+const CinemaDetail = ({ navigation }: { navigation: any }) => {
 
   return (
       <View>

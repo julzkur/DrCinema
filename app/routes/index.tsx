@@ -6,11 +6,12 @@ import CinemasDetailView from '../views/CinemasDetail';
 
 export type RootStackParamList = {
     CinemasList: undefined;
+    CinemaDetail: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const Routes: React.FC = () => {
+const Routes = () => {
     return (
     <Stack.Navigator
       initialRouteName="CinemasList"
