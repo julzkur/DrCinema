@@ -1,15 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import CinemasListView from '../views/CinemasList';
 
 
 export type RootStackParamList = {
-    // Movie: undefined;
+    CinemasList: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const Routes: React.FC = () => {
-    {/* return (
+    return (
     <Stack.Navigator
       initialRouteName="CinemasList"
       screenOptions={{headerShown: false}}>
@@ -17,7 +18,7 @@ const Routes: React.FC = () => {
       <Stack.Screen name="CinemasList" component={CinemasListView} />
       
     </Stack.Navigator>
-  );*/}
+  );
 };
 
 export default Routes;
