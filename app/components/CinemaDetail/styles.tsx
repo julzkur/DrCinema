@@ -2,14 +2,15 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffffff',
-    
+    backgroundColor: '#343a40',
+    overflow: 'scroll'
   },
   name: {
     alignItems: 'center',
     fontSize: 25,
     fontWeight: 'bold',
-    fontFamily: 'Georgia'
+    fontFamily: 'Georgia',
+    color: 'white'
   },
   nameContainer: {
     alignItems: 'center',
@@ -17,7 +18,8 @@ export const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    fontFamily: 'Arial'
+    fontFamily: 'Arial',
+    color: 'white'
   },
   descriptionContainer: {
     alignItems: 'center',
@@ -25,28 +27,31 @@ export const styles = StyleSheet.create({
   },
   address: {
     fontSize: 16,
-    fontFamily: 'Arial'
-  },
-  addressContainer: {
-    padding: 10,
-    alignItems: 'flex-start'
+    paddingLeft: 10,
+    color: 'white'
   },
   phone: {
-    paddingLeft: 10
+    paddingLeft: 10,
+    alignItems: 'center',
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'Arial'
   },
-  phoneContainer: {
+  phoneAndAddressContainer: {
     padding: 10,
     flexDirection: 'row',
+    alignItems: 'center'
   },
-  phoneImage: {
+  phoneAndAddressImage: {
     width: 30,
-    height: 30
+    height: 30,
+    alignItems: 'center'
   },
   website: {
     //
   },
   imagecontainer: {
-    padding: 10,
+    paddingBottom: 10,
     alignItems: 'center'
   },
   image: {
