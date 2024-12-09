@@ -1,8 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styles from "./styles";
+import { ReactNode } from "react";
 
-const CinemasList: React.FC<{ navigation: any }> = ({ navigation }) => {
+
+// instead of : React.FC<{ navigation: any }> = ({ navigation }) => 
+const CinemasList = ({ navigation }: { navigation: any }) => {
 
   return (
       <View style={styles.container}>
