@@ -15,7 +15,8 @@ const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
         data.phoneNumber,
         data.website,
         data.address,
-        data.movies
+        data.movies,
+        data.description
       );
       console.log(cinema); 
       return cinema;

@@ -11,8 +11,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 20,
-    borderTopWidth: 3,
-    borderColor: "#aaaaaa",
     borderRadius: 10,
     height: 120,
   },
@@ -22,6 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     alignItems: 'center',
     height: '90%',
+    paddingTop: 10,
     backgroundColor: "#777777",
   },
   cinemaDetails: {
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#fff",
     textAlign: 'center',
+    marginBottom: 5,
   },
   moviesContainer: {
     flexDirection: 'row',
