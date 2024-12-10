@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
+import { Link } from "expo-router";
 
 const CinemaDetail = ({ navigation }: { navigation: any }) => {
 
@@ -23,8 +24,9 @@ const CinemaDetail = ({ navigation }: { navigation: any }) => {
         <Image source={require('../../resources/phoneWhite.png')} style={styles.phoneAndAddressImage}></Image>
         <Text style={styles.phone}>+354 1234567</Text>
       </View>
-      <View>
-        
+      <View style={styles.webContainer}>
+        <Image source={require('../../resources/webImgWhite.png')} style={styles.phoneAndAddressImage}></Image>
+        <Link style={styles.webLink} href={'https://malid.ru.is/'}>Go To Website</Link>
       </View>
     </View>
   );
