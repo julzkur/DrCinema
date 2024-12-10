@@ -7,7 +7,7 @@ import styles from "./styles";
 
 export const CinemasListView = ({ navigation }: any) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.cinemasListContainer}>
       <Header showBackButton={false} navigation={navigation} />
       <CinemasList navigation={navigation} />
       <Footer navigation={navigation}/>
