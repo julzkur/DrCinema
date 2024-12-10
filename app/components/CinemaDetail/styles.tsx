@@ -47,15 +47,24 @@ export const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center'
   },
-  website: {
-    //
-  },
   imagecontainer: {
     paddingBottom: 10,
     alignItems: 'center'
   },
   image: {
     alignItems: 'center'
+  },
+  webContainer: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  webLink: {
+    paddingLeft: 10,
+    alignItems: 'center',
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'Arial'
   }
 });
 
