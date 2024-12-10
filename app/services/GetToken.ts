@@ -7,8 +7,4 @@ exec(`powershell -ExecutionPolicy Bypass -File "${__dirname}\\tokenGenerator.ps1
     console.error(`stderr: ${stderr}`);
     return;
   }
-
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
-
 });
