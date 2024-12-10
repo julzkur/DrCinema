@@ -1,28 +1,27 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CinemasListView from '../views/CinemasList';
 import CinemasDetailView from '../views/CinemasDetail';
-import { NavigationContainer } from '@react-navigation/native';
+import Cinema from '../models/cinema';
 
 export type RootStackParamList = {
     CinemasList: undefined;
-    CinemaDetail: undefined;
+    Cinema: {cinema: Cinema};
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const Routes = () => {
     return (
-      <NavigationContainer>
+
         <Stack.Navigator
           initialRouteName="CinemasList">
           
-          <Stack.Screen name="CinemasList" component={CinemasListView} />
-          <Stack.Screen name="CinemaDetail" component={CinemasDetailView} />
+          <Stack.Screen name="CinemasList" component={CinemasListView} options={{ headerShown: false }} />
+          <Stack.Screen name="Cinema" component={CinemasDetailView} options={{ headerShown: false }} />
 
         </Stack.Navigator>
-      </NavigationContainer>
+
   );
 };
 

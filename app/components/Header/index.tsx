@@ -7,12 +7,19 @@ const Header = ({ showBackButton=false, navigation}: {showBackButton:boolean, na
   
   return (
     <View style={styles.container}>
+      
+      
       {showBackButton && (
-      <TouchableOpacity onPress={() => navigation.navigate("CinemasList")} style={styles.backButton}>
-        <Image source={require('../../resources/backArrowWhite.png')} style={styles.backButtonImage}></Image>
-      </TouchableOpacity>
+      <View style={[styles.backButtonContainer]}>
+          <TouchableOpacity onPress={() => navigation.navigate("CinemasList")} style={styles.backButton}>
+            <Image source={require('../../resources/backArrowWhite.png')} style={styles.backButtonImage}></Image>
+          </TouchableOpacity>
+      </View>
       )}
-      <View style={styles.imageContainer}>
+      <View style={[styles.titleContainer]}>
+        <Text style={styles.title}>Dr Cinema</Text>
+      </View>
+      <View style={[styles.imageContainer]}>
         <Image source={require('../../resources/logoWhite.png')} style={styles.image}></Image>
       </View>
     </View>
