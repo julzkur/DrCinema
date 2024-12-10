@@ -2,11 +2,14 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 10,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    alignContent: 'center',
     justifyContent: "center",
     backgroundColor: "#212529", 
     paddingLeft: 14,
-    position: "relative",
     height: 100,
   },
   text: {
