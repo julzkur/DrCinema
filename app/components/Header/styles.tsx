@@ -3,10 +3,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 
   container: {
-    height: 80,
-    paddingTop: 10,
+    height: 110,
+    paddingTop: 20,
     justifyContent: "center",
-    backgroundColor: "#caf0f8", 
+    backgroundColor: "#212529", 
     paddingLeft: 14,
     position: "relative"
   },
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   backButtonImage: {
     alignItems: 'center',
@@ -27,14 +27,15 @@ const styles = StyleSheet.create({
     height: 40,
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     alignItems: 'center',
   },
   imageContainer: {
     alignItems: 'flex-end',
-    margin: 10,
-    paddingBottom: 8
+    marginTop: 10,
+    marginEnd: 10,
+    paddingBottom: 0
   }
 });
   

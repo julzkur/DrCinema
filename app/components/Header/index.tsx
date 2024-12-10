@@ -9,11 +9,11 @@ const Header = ({ showBackButton=false, navigation}: {showBackButton:boolean, na
     <View style={styles.container}>
       {showBackButton && (
       <TouchableOpacity onPress={() => navigation.navigate("CinemasList")} style={styles.backButton}>
-        <Image source={require('../../resources/backArrow.png')} style={styles.backButtonImage}></Image>
+        <Image source={require('../../resources/backArrowWhite.png')} style={styles.backButtonImage}></Image>
       </TouchableOpacity>
       )}
       <View style={styles.imageContainer}>
-        <Image source={require('../../resources/pngegg.png')} style={styles.image}></Image>
+        <Image source={require('../../resources/logoWhite.png')} style={styles.image}></Image>
       </View>
     </View>
   );
