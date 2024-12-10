@@ -5,6 +5,7 @@ export interface Cinema {
     website: string;
     address: string;
     movies: string[];
+    description: string;
   }
   
   export class CinemaModel {
@@ -15,6 +16,7 @@ export interface Cinema {
       public website: string,
       public address: string,
       public movies: string[],
+      public description: string,
     ) {}
   
     toJson(): string {
@@ -25,12 +27,13 @@ export interface Cinema {
         website: this.website,
         address: this.address,
         movies: this.movies || [],
+        description: this.description,
       });
     }
   
     static fromJSON(json: string): CinemaModel {
       const data = JSON.parse(json);
-      return new CinemaModel(data.id, data.name, data.phoneNumber, data.website, data.address, data.movies); 
+      return new CinemaModel(data.id, data.name, data.phoneNumber, data.website, data.address, data.movies, data.description); 
     }
   }
   

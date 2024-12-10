@@ -9,7 +9,8 @@ export const dummyCinemas = [
         "The Matrix",
         "Inception",
         "Interstellar"
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam eveniet, quisquam neque cum totam provident ea earum quasi aut hic esse officia. Sed qui quia ratione mollitia iusto commodi."
     },
     {
         "id": "2",
@@ -21,7 +22,8 @@ export const dummyCinemas = [
         "Avatar",
         "Titanic",
         "The Godfather"
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam eveniet, quisquam neque cum totam provident ea earum quasi aut hic esse officia. Sed qui quia ratione mollitia iusto commodi."
     },
     {
         "id": "3",
@@ -33,7 +35,8 @@ export const dummyCinemas = [
         "Jurassic Park",
         "The Avengers",
         "Frozen"
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam eveniet, quisquam neque cum totam provident ea earum quasi aut hic esse officia. Sed qui quia ratione mollitia iusto commodi."
     },
 ];
 
