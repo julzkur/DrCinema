@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
-const MovieCard = ({ navigation, thumbnailphoto, name, releaseYear }: { navigation: any, thumbnailphoto: undefined, name: string, releaseYear: number }) => {
+const MovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
 
   const handlePress = () => {
     navigation.navigate();
@@ -11,13 +11,16 @@ const MovieCard = ({ navigation, thumbnailphoto, name, releaseYear }: { navigati
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
       <View style={styles.imageContainer} >
-        <Image source={thumbnailphoto} style={styles.image} />
+        <Image source={movie.thumbnailphoto} style={styles.image} />
       </View>
-      <View style={styles.imageContainer}>
-        <Text style={styles.name}>{name}</Text>
+      <View style={styles.nameContainer}>
+        <Text style={styles.name}>{movie.name}</Text>
       </View>
       <View style={styles.releaseYearContainer}>
-        <Text style={styles.releseYear}>{releaseYear}</Text>
+        <Text style={styles.releseYear}>{movie.releaseYear}</Text>
+      </View>
+      <View style={styles.genresContainer}>
+        <Text style={styles.genres}>{movie.genres}</Text>
       </View>
     </TouchableOpacity>
   );
