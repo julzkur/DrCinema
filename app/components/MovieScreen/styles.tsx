@@ -90,6 +90,11 @@ export const styles = StyleSheet.create({
   genreContainer: {
     paddingTop: 10, // Adds space above the genre text
   },
+  buttonContainer: {
+    marginTop: 20, // Space between the content and the button
+    alignItems: "center", // Center the button horizontally
+  },
+  
   
   
   

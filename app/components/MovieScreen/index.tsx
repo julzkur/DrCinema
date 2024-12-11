@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
+import PurchaseButton from "../PurchaseTicketButton";
 
 const MovieScreen = ({ navigation }: { navigation: any }) => {
   return (
@@ -50,6 +51,10 @@ const MovieScreen = ({ navigation }: { navigation: any }) => {
         <Text style={styles.phone}>Genre: Action</Text>
       </View>
 
+      {/* Purchase Ticket Button */}
+      <View style={styles.buttonContainer}>
+        <PurchaseButton navigation={navigation} />
+      </View>
     </View>
   );
 };
