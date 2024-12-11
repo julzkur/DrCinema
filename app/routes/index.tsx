@@ -6,6 +6,8 @@ import Cinema from '../models/cinema';
 import UpcomingMoviesView from '../views/UpcomingMovies';
 import MovieScreen from '../components/MovieScreen';
 import MovieScreenDisplay from '../views/MovieScreen';
+import TrailerScreen from '../components/TrailerScreen';
+import TrailerScreenView from '../views/TrailerScreenView';
 
 export type RootStackParamList = {
     Login: undefined;
@@ -13,6 +15,7 @@ export type RootStackParamList = {
     Cinema: {cinema: Cinema};
     UpcomingMovies: undefined;
     MovieScreen: undefined;
+    TrailerScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -27,6 +30,7 @@ const Routes = () => {
           <Stack.Screen name="Cinema" component={CinemasDetailView} options={{ headerShown: false }} />
           <Stack.Screen name="UpcomingMovies" component={UpcomingMoviesView} options={{ headerShown: false }} />
           <Stack.Screen name="MovieScreen" component={MovieScreenDisplay} options={{ headerShown: false }} />
+          <Stack.Screen name="TrailerScreen" component={TrailerScreenView} options={{ headerShown: false }} />
 
         </Stack.Navigator>
 
