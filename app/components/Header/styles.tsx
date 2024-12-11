@@ -3,12 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 
   container: {
-    height: 60,
+    height: 100,
     justifyContent: "space-between",
     backgroundColor: "#212529", 
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
+    paddingTop: 50,
   },
   backButtonContainer: {
     justifyContent: 'center', 

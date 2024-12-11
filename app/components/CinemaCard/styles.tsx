@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   cinemaItem: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#777777",
+    backgroundColor: "#6C757D",
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 10,
@@ -16,25 +16,26 @@ const styles = StyleSheet.create({
   },
   cinemaName: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between', 
     alignItems: 'center',
-    height: '90%',
-    paddingTop: 10,
-    backgroundColor: "#777777",
+    height: '70%',
+    paddingTop: 20,
+    //backgroundColor: "#777777",
   },
-  cinemaDetails: {
-    flex: 1,
-    borderRadius: 10,
-    backgroundColor: "#aaaaaa",
-    marginTop: 5,
-    justifyContent: 'center',
-    padding: 10,
-  },
+  // cinemaDetails: {
+  //   flex: 1,
+  //   borderRadius: 10,
+  //   backgroundColor: "#aaaaaa",
+  //   marginTop: 5,
+  //   justifyContent: 'center',
+  //   padding: 10,
+  // },
   name: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#000000",
+    color: "white",
+    fontFamily: 'Georgia',
   },
   websiteButton: {
     paddingHorizontal: 10,
@@ -43,30 +44,37 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row'
   },
   website: {
     fontSize: 14,
     color: "#fff",
     textAlign: 'center',
     marginBottom: 5,
+    paddingLeft: 7
   },
-  moviesContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between', 
-    alignItems: 'center', 
-    marginTop: 8,
+  webImage: {
+    width: 20,
+    height: 20,
+    alignItems: 'center'
   },
-  movieItem: {
-    fontSize: 16,
-    color: "#eeeeee",
-    marginBottom: 10,
-    marginLeft: 5,
-    marginRight: 5,
-  },
-  noMovies: {
-    fontSize: 16,
-    color: "#ff6b6b",
-  },
+  // moviesContainer: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between', 
+  //   alignItems: 'center', 
+  //   marginTop: 8,
+  // },
+  // movieItem: {
+  //   fontSize: 16,
+  //   color: "#eeeeee",
+  //   marginBottom: 10,
+  //   marginLeft: 5,
+  //   marginRight: 5,
+  // },
+  // noMovies: {
+  //   fontSize: 16,
+  //   color: "#ff6b6b",
+  // },
 });
 
 export default styles;
