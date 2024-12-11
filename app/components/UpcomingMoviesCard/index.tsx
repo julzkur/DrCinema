@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
+import TrailerScreen from "../TrailerScreen";
 
 const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
 
   const handlePress = () => {
-    //navigation.navigate();
+    navigation.navigate(TrailerScreen);
   };
 
   return (

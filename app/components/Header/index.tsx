@@ -11,7 +11,7 @@ const Header = ({ showBackButton=false, navigation}: {showBackButton:boolean, na
       
       {showBackButton && (
       <View style={[styles.backButtonContainer]}>
-          <TouchableOpacity onPress={() => navigation.navigate("CinemasList")} style={styles.backButton}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Image source={require('../../resources/backArrowWhite.png')} style={styles.backButtonImage}></Image>
           </TouchableOpacity>
       </View>
