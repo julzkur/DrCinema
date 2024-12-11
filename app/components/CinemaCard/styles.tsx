@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 10,
     height: 120,
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
   cinemaName: {
     flex: 1,

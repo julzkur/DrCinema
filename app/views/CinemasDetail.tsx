@@ -23,8 +23,8 @@ export const CinemasDetailView = ({ navigation, route }: any) => {
         <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
           <Header navigation={navigation} showBackButton={true} />
           <CinemaDetail cinema={cinema} navigation={navigation} />
-          <MoviesList navigation={navigation} />
-        <Footer navigation={navigation} />
+          <MoviesList navigation={navigation} cinema={cinema} />
+          <Footer navigation={navigation} />
         </ScrollView>
     </View>
   );

@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
+import { fetchMovies, selectMovies, selectMoviesLoading, selectMoviesError } from '@/app/redux/movieSlice';
 import styles from "./styles";
 import MovieCard from "../MovieCard";
-import dummyMovies from '../../resources/dummyData'
+import MovieModel from "@/app/models/movie";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "@/app/redux/store";
 
-const MoviesList = ({ navigation }: { navigation: any }) => {
+const MoviesList = ({ navigation, cinema }: { navigation: any; cinema: any }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const movies = useSelector(selectMovies);
+  const loading = useSelector(selectMoviesLoading);
+  const error = useSelector(selectMoviesError);
+
+  useEffect(() => {
+    if (loading === false && movies.length === 0) {
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzg3NDI1MCwiZXhwIjoxNzMzOTYwNjUwfQ.w7DNbCJ1ox41HfUHWhTLixBj8xlrDjSlPmYCQGfjVik'; // Use your token
+      dispatch(fetchMovies(token));
+    }
+  }, [dispatch, loading, movies.length]);
+
+  const filteredMovies = movies.filter((movie: MovieModel) =>
+    movie.showtimes.some((showtime) => showtime.cinema_name === cinema.name) 
+  );
 
   return (
       <View style={styles.container}>
@@ -12,9 +30,9 @@ const MoviesList = ({ navigation }: { navigation: any }) => {
           <Text style={styles.title}>Movies shown in this cinema</Text>
         </View>
         <View style={styles.cardContainer}>
-          {dummyMovies.map((item) => (
+          {filteredMovies.map((item: MovieModel) => (
           <View style={styles.cardWrapper} key={item.id}>
-            <MovieCard key={item.id} movie={item} navigation={navigation} />
+            <MovieCard movie={item} navigation={navigation} />
           </View>
           ))}
         </View>

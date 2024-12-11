@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import Cinema from "@/app/models/cinema";
+import CinemaModel from "@/app/models/cinema";
 import styles from "./styles";
 import { Link } from "expo-router";
 
 interface CinemaCardProps {
-  cinema: Cinema;
+  cinema: CinemaModel;
   navigation: any;
 }
 
@@ -17,7 +17,7 @@ const CinemaCard: React.FC<CinemaCardProps> = ({ cinema, navigation }) => {
 
     return (
         <TouchableOpacity onPress={handlePress} style={styles.cinemaItem}>
-            <View style={styles.cinemaName}>
+            <View style={styles.cinemaItem}>
                 <Text style={styles.name}>{cinema.name}</Text>
             </View>
                 <TouchableOpacity style={styles.websiteButton} onPress={() => { /* Handle website press */ }}>
