@@ -2,12 +2,6 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
-type Genre = {
-  ID: number;
-  Name: string;
-  NameEN: string;
-};
-
 const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
 
   const handlePress = () => {

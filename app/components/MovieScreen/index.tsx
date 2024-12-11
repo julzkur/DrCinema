@@ -42,7 +42,7 @@ const MovieScreen = ({ navigation }: { navigation: any }) => {
           source={require("../../resources/whiteClock.png")}
           style={styles.phoneAndAddressImage}
         />
-        <Text style={styles.phone}>Duration Year: 169 minutes</Text>
+        <Text style={styles.phone}>Duration: 169 minutes</Text>
       </View>
 
       {/* Genres */}

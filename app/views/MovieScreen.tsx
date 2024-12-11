@@ -8,12 +8,12 @@ import styles from "./styles";
 
 export const MovieScreenDisplay = ({ navigation }: any) => {
   return (
-    <View style={styles.container}>
-   
-      <Header navigation={navigation} showBackButton={true} />
-      <MovieScreen navigation={navigation} />
-      <Footer navigation={navigation} />
- 
+    <View style={styles.cinemasListContainer}>
+      <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
+        <Header navigation={navigation} showBackButton={true} />
+        <MovieScreen navigation={navigation} />
+        <Footer navigation={navigation} />
+      </ScrollView>
     </View>
   );
 };

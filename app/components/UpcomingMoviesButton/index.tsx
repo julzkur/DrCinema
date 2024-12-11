@@ -1,12 +1,11 @@
 import React from "react";
-import { TouchableOpacity, Text, Button } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
-import UpcomingMoviesView from "@/app/views/UpcomingMovies";
 
 const UpcomingMovieButton = ({ navigation }: { navigation: any; }) => {
   
   const handlePress = () => {
-    navigation.navigate(UpcomingMoviesView);
+    navigation.navigate("UpcomingMovies");
   };
   
   return (

@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import UpcomingMovieButton from "../UpcomingMoviesButton";
 
 export const styles = StyleSheet.create({
   container: {
