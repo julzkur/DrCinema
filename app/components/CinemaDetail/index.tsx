@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
 import { Link } from "expo-router";
-import Cinema from "@/app/models/cinema";
+import CinemaModel from "@/app/models/cinema";
 
 interface CinemaDetailsProps {
-  cinema: Cinema;
+  cinema: CinemaModel;
   navigation: any;
 }
 
@@ -32,7 +32,7 @@ const CinemaDetail: React.FC<CinemaDetailsProps> = ({ cinema, navigation }) => {
       </View>
       <View style={styles.webContainer}>
         <Image source={require('../../resources/webImgWhite.png')} style={styles.phoneAndAddressImage}></Image>
-        <Link style={styles.webLink} href={'https://malid.ru.is/'}>Go To Website</Link>
+        <Link style={styles.webLink} href={cinema.website}>Go To Website</Link>
       </View>
     </View>
   );

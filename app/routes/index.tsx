@@ -5,6 +5,7 @@ import CinemasDetailView from '../views/CinemasDetail';
 import Cinema from '../models/cinema';
 
 export type RootStackParamList = {
+    Login: undefined;
     CinemasList: undefined;
     Cinema: {cinema: Cinema};
 };
