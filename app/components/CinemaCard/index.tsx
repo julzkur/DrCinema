@@ -3,12 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Cinema from "@/app/models/cinema";
 import styles from "./styles";
 
-interface CinemaCardProps {
-  cinema: Cinema;
-  navigation: any;
-}
-
-const CinemaCard: React.FC<CinemaCardProps> = ({ cinema, navigation }) => {
+const CinemaCard = ({ navigation, cinema }: {navigation:any, cinema:Cinema}) => {
 
     const handlePress = () => {
         navigation.navigate("Cinema", { cinema });

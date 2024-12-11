@@ -6,7 +6,7 @@ import dummyCinemas from "@/app/resources/dummyCinemas";
 import styles from "./styles";
 
 
-const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
+const CinemasList = ({ navigation }: {navigation:any}) => {
   const [cinemas, setCinemas] = useState<CinemaModel[]>(
     dummyCinemas.map((data) => {
       const cinema = new CinemaModel(

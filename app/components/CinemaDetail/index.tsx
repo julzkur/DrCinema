@@ -3,13 +3,19 @@ import { View, Text, Image } from "react-native";
 import styles from "./styles";
 import { Link } from "expo-router";
 import Cinema from "@/app/models/cinema";
+import { useDispatch, useSelector } from "react-redux";
+import { updateName } from "@/app/redux/features/theaterSlice";
+import { useEffect } from "react";
 
-interface CinemaDetailsProps {
-  cinema: Cinema;
-  navigation: any;
-}
-
-const CinemaDetail: React.FC<CinemaDetailsProps> = ({ cinema, navigation }) => {
+const CinemaDetail = ({ navigation, cinema }: {navigation:any, cinema:Cinema}) => {
+  // const dispatch = useDispatch();
+  // const name:string = useSelector((state:any) => {
+  //   return state.name.value;
+  // })
+// 
+  // useEffect(() => {
+  //   dispatch(updateName());
+  // }, [dispatch]);
 
   return (
     <View style={styles.container}>

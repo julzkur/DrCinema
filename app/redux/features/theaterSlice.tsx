@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const theaterSlice = createSlice({
   name: "theaterName",
   initialState: {
@@ -12,3 +11,6 @@ const theaterSlice = createSlice({
     },
   },
 });
+
+export const { updateName } = theaterSlice.actions;
+export default theaterSlice.reducer;
