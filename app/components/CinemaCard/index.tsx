@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import CinemaModel from "@/app/models/cinema";
 import styles from "./styles";
-import { Link } from "expo-router";
 
 interface CinemaCardProps {
   cinema: CinemaModel;

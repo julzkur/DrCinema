@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import UpcomingMovieButton from "../UpcomingMoviesButton";
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,9 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     paddingLeft: 16,
   },
-    
+  UpcomingMoviesContainer: {
+    flexDirection: 'column',
+  }
 });
 
 export default styles;

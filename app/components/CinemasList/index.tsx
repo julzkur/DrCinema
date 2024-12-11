@@ -5,6 +5,7 @@ import { fetchCinemas } from '@/app/redux/cinemaSlice';
 import { RootState, AppDispatch } from "@/app/redux/store";
 import CinemaCard from "../CinemaCard";
 import styles from "./styles";
+import UpcomingMovieButton from "../UpcomingMoviesButton";
 
 
 const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
@@ -30,7 +31,10 @@ const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
       <View style={styles.container}>
-        <Text style={styles.title}>Cinemas</Text>
+        <View style={styles.UpcomingMoviesContainer}>
+          <Text style={styles.title}>Cinemas</Text>
+          <UpcomingMovieButton navigation={navigation} />
+        </View>
           <FlatList
             data={cinemas}
             keyExtractor={(item) => item.id}
