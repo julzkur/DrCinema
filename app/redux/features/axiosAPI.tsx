@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 class AxiosAPI{
-  private apiClient: AxiosInstance;
+  public apiClient: AxiosInstance;
 
   constructor(baseURL: string) {
     // Create an Axios instance
@@ -18,8 +18,7 @@ class AxiosAPI{
 
   async fetchData(endpoint: string): Promise<any> {
     try {
-      const response: AxiosResponse<any> = await this.apiClient.get(endpoint);
-      console.log(response.data);
+      const response: AxiosResponse<any> = await this.apiClient.get<{ id: number; name: string }>(endpoint);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -28,12 +27,6 @@ class AxiosAPI{
         console.error('Unexpected error:', error);
       }
     }
-  }
-
-  async get(endpoint:string): Promise<any> {
-    const response = await axios.get<{ id: number; name: string }>(`https://api.kvikmyndir.is/movies`);
-    console.log(response.data);
-    return;
   }
 }
 

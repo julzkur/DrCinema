@@ -15,7 +15,7 @@ const TestComponent = () => {
   });
   useEffect(() => {
     // dispatch(getMovies());
-    dispatch(getMovieById("5"));
+    dispatch(getMovieById("Gladiator II"));
   }, []);
 
   return (

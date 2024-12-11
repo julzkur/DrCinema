@@ -49,8 +49,8 @@ export const getMovieById = (id:string) => {
   return async (dispatch:AppDispatch) => {
     try {
       // loading ?
-      const response = await apiService.fetchData("/movies/")// change this to movie by id lookup "/movies/"
-      console.log(response.data);
+      const response = await apiService.fetchData(`/movies/?title=${id}`)// change this to movie by id lookup "/movies/"
+      console.log(response);
       dispatch(selectMovie(response.data));
     }
     catch (err){
