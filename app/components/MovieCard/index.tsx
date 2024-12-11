@@ -11,7 +11,7 @@ type Genre = {
 const MovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
 
   const handlePress = () => {
-    //navigation.navigate();
+    navigation.navigate('MovieScreen');
   };
   
 
