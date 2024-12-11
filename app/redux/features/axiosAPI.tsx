@@ -7,9 +7,11 @@ class AxiosAPI{
     // Create an Axios instance
     this.apiClient = axios.create({
       baseURL,
-      timeout: 100, 
+      timeout: 1000,
+      method: 'GET', 
       headers: {
-        'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzkxNzYzNiwiZXhwIjoxNzM0MDA0MDM2fQ.V839rJQQe4ORVaqX6nyZiCK3UpRbKYAdX3EEoYPBH6k',
+        'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzkyNDA5NCwiZXhwIjoxNzM0MDEwNDk0fQ.yYNC9cZq95j2coGgosg_KhSRUwiq0FyQwUnwPpjbRlE',
+        'Accept' : 'application/json',
       },
     });
   }
@@ -28,8 +30,8 @@ class AxiosAPI{
     }
   }
 
-  async get(): Promise<any> {
-    const response = await axios.get<{ id: number; name: string }>('https://api.kvikmyndir.is/movies');
+  async get(endpoint:string): Promise<any> {
+    const response = await axios.get<{ id: number; name: string }>(`https://api.kvikmyndir.is/movies`);
     console.log(response.data);
     return;
   }

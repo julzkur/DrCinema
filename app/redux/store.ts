@@ -6,7 +6,12 @@ const store = configureStore({
     reducer: {
       movies: movieSlice.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          thunk: {
+            extraArgument: {}, // Optional: Add any extra arguments for thunk if needed.
+          },
+        }),
   });
   
   export type AppDispatch = typeof store.dispatch;

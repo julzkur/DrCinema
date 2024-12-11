@@ -2,14 +2,15 @@ import Routes from "./routes";
 import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux'
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import store from './redux/store';
+import type { AppDispatch, RootState } from './redux/store';
 import { useEffect } from "react";
 import { View } from "react-native";
 import { getMovies, getMovieById } from "./redux/features/moviesSlice";
 
 const TestComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const moviesCinemaView = useSelector((state:any) => {
+  const moviesCinemaView = useSelector((state: any) => {
     return state.movies.moviesCinemaView;
   });
   useEffect(() => {
