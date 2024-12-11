@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text } from "react-native";
 import { fetchMovies, selectMovies, selectMoviesLoading, selectMoviesError } from '@/app/redux/movieSlice';
 import styles from "./styles";
 import MovieCard from "../MovieCard";

@@ -19,14 +19,14 @@ export const CinemasDetailView = ({ navigation, route }: any) => {
   }
 
   return (
-    <View style={styles.cinemaDetailContainer}>
-        <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
-          <Header navigation={navigation} showBackButton={true} />
-          <CinemaDetail cinema={cinema} navigation={navigation} />
-          <MoviesList navigation={navigation} cinema={cinema} />
-          <Footer navigation={navigation} />
-        </ScrollView>
-    </View>
+    <ScrollView style={styles.cinemaDetailContainer}>
+      <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
+        <Header navigation={navigation} showBackButton={true} />
+        <CinemaDetail cinema={cinema} navigation={navigation} />
+        <MoviesList navigation={navigation} cinema={cinema} />
+        <Footer navigation={navigation} />
+      </ScrollView>
+    </ScrollView>
   );
 };
 
