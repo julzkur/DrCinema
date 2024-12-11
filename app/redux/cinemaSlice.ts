@@ -1,19 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from './store';
+import AxiosAPI from './axiosAPI';
 import { CinemaModel } from '../models/cinema';
+import axios from 'axios';
 
-const API_URL = 'https://api.kvikmyndir.is/movies';
+const api = new AxiosAPI('https://api.kvikmyndir.is');
 
-interface Showtime {
-  time: string;
-  purchase_url: string;
-  info: string;
-}
-
-interface Cinema {
-  id: string;
-  name: string;
-  showtimes: Showtime[];
-}
 
 interface CinemaState {
   cinemas: CinemaModel[];
@@ -27,61 +21,68 @@ const initialState: CinemaState = {
   error: null,
 };
 
+export const useCinemas = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { cinemas, loading, error } = useSelector((state: RootState) => state.cinemas);
+
+  useEffect(() => {
+    dispatch(fetchCinemas());
+  }, [dispatch]);
+
+  return { cinemas, loading, error };
+};
+
 // Fetch cinemas from the API
-export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (token: string, { rejectWithValue }) => {
-    try {
-        const response = await fetch("https://api.kvikmyndir.is/movies", {
-          method: "GET",
-          headers: {
-            "x-access-token": `${token}`,
-            "Accept": "application/json",
-          },
-        });
-  
-        if (!response.ok) {
-          throw new Error("Failed to fetch cinemas");
+export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, { rejectWithValue }) => {
+  try {
+    const data = await api.fetchData('/movies');
+
+    // Extract and map cinemas with necessary checks
+    const cinemas = data.flatMap((movie: any) =>
+      movie.showtimes.map((showtime: any) => {
+        const cinema = showtime.cinema;
+
+        // handle invalid IDs
+        if (!cinema?.id || !cinema?.name) {
+          console.warn('Skipping cinema with invalid data:', cinema);
+          return null;
         }
-  
-        const data = await response.json();
 
-        const cinemas = data.flatMap((movie: any) =>
-          movie.showtimes.map((showtime: any) => {
-            const cinema = showtime.cinema;
-  
-            // Skip cinemas with undefined or invalid IDs
-            if (!cinema.id || !cinema.name) {
-              console.warn('Skipping cinema with invalid data:', cinema);
-              return null; 
-            }
-                
-            const cinemaModel = new CinemaModel(
-              cinema.id,
-              cinema.name,
-              cinema.phoneNumber || "+354 888 1234", // Fallback phone number
-              cinema.address || "123 Paved Street, FantasyLand", 
-              cinema.website || "https://google.com", // Fallback website
-              cinema.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam eveniet, quisquam neque cum totam provident ea earum quasi aut hic esse officia. Sed qui quia ratione mollitia iusto commodi.", 
-            );
-            return cinemaModel.toObject();
-          })
-        ).filter((cinema: any) => cinema !== null);
+        return {
+          id: cinema.id,
+          name: cinema.name,
+          phoneNumber: cinema.phoneNumber || '+354 888 1234', // Default phone number
+          address: cinema.address || '123 Paved Street, FantasyLand', // Default address
+          website: cinema.website || 'https://google.com', // Default website
+          description:
+            cinema.description ||
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam eveniet, quisquam neque cum totam provident ea earum quasi aut hic esse officia. Sed qui quia ratione mollitia iusto commodi.',
+        };
+      })
+    ).filter((cinema: any) => cinema !== null); // Remove null entries
 
-        const uniqueCinemas = Array.from(new Set(cinemas.map((cinema: any) => cinema.id)))
-        .map(id => cinemas.find((cinema: any) => cinema.id === id));
+    // only fetch cinemas with unique IDs
+    const uniqueCinemas = Array.from(new Set(cinemas.map((cinema: any) => cinema.id)))
+      .map((id) => cinemas.find((cinema: any) => cinema.id === id));
 
-        console.log('Mapped and Unique Cinemas:', uniqueCinemas);
+    console.log('Mapped and Unique Cinemas:', uniqueCinemas);
 
-        return uniqueCinemas; // Return the fetched data to be added to the state
-      } catch (error) {
-        return rejectWithValue(error);
-      }
+    return uniqueCinemas; // return cinemas
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.response?.data?.message || error.message || 'Unknown API error');
     }
-  );
+    return rejectWithValue('An unexpected error occurred');
+  }
+});
+
+  
 
 const cinemaSlice = createSlice({
   name: 'cinemas',
   initialState,
   reducers: {},
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchCinemas.pending, (state) => {
@@ -89,7 +90,7 @@ const cinemaSlice = createSlice({
       })
       .addCase(fetchCinemas.fulfilled, (state, action) => {
         state.loading = false;
-        state.cinemas = action.payload;  // Assuming API returns an array of movies with showtimes
+        state.cinemas = action.payload;  
         console.log('Cinemas in Redux State:', state.cinemas);
       })
       

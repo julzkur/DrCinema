@@ -1,32 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, FlatList } from "react-native";
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCinemas } from '@/app/redux/cinemaSlice';
-import { RootState, AppDispatch } from "@/app/redux/store";
+import { useCinemas } from '@/app/redux/cinemaSlice';
 import CinemaCard from "../CinemaCard";
 import styles from "./styles";
 import UpcomingMovieButton from "../UpcomingMoviesButton";
 
 
-const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { cinemas, loading, error } = useSelector((state: RootState) => state.cinemas);
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzg3NDI1MCwiZXhwIjoxNzMzOTYwNjUwfQ.w7DNbCJ1ox41HfUHWhTLixBj8xlrDjSlPmYCQGfjVik";  // Hardcode the token here
-  console.log('Cinemas from Redux:', cinemas);
+const CinemasList= ({ navigation}: any) => {
 
-  useEffect(() => {
-    console.log('Token:', token);
-    if (token) {
-      dispatch(fetchCinemas(token)); // Pass token to the fetchCinemas action
-    }
-  }, [dispatch, token]);
+  const { cinemas, loading, error } = useCinemas();
+  console.log(cinemas)
 
   if (loading) {
+    // maybe add component for loading screen
     return <Text>Loading cinemas...</Text>;
   }
 
+    // error screen component?
   if (error) {
-    return <Text>{error}</Text>;
+    console.error('Error fetching cinemas:', error);
+    const errorMessage = typeof error === 'string' ? error : error || 'An error occurred.';
+    return <Text>{errorMessage}</Text>;
   }
 
   return (
@@ -39,7 +33,6 @@ const CinemasList : React.FC<{ navigation: any }> = ({ navigation }) => {
             data={cinemas}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
-              console.log('Rendering CinemaCard for:', item);
               return <CinemaCard cinema={item} navigation={navigation} />
             }}
         />

@@ -93,6 +93,7 @@ const movieSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {},
+  
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {

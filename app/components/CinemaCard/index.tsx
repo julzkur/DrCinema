@@ -3,12 +3,8 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import CinemaModel from "@/app/models/cinema";
 import styles from "./styles";
 
-interface CinemaCardProps {
-  cinema: CinemaModel;
-  navigation: any;
-}
 
-const CinemaCard: React.FC<CinemaCardProps> = ({ cinema, navigation }) => {
+const CinemaCard = ({cinema, navigation}: {navigation: any, cinema: CinemaModel}) => {
 
     const handlePress = () => {
         navigation.navigate("Cinema", { cinema });
@@ -23,21 +19,6 @@ const CinemaCard: React.FC<CinemaCardProps> = ({ cinema, navigation }) => {
                     <Image source={require('../../resources/webImgWhite.png')} style={styles.webImage}></Image>
                     <Text style={styles.website}>{cinema.website}</Text>
                 </TouchableOpacity>
-                
-            {/*    
-             <View style={styles.cinemaDetails}>
-                <View style={styles.moviesContainer}>
-                    {cinema.movies.length > 0 ? (
-                        cinema.movies.slice(0, 3).map((movie, index) => (
-                        <Text key={index} style={styles.movieItem}>
-                            {movie}
-                        </Text>
-                        ))
-                        ) : (
-                        <Text style={styles.noMovies}>No movies available</Text>
-                    )}
-                </View>
-            </View> */}
         </TouchableOpacity>
     );
 };
