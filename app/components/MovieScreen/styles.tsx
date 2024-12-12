@@ -49,10 +49,14 @@ export const styles = StyleSheet.create({
   },
   imagecontainer: {
     paddingBottom: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%',
+    height: 400,
   },
   image: {
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
   },
   webContainer: {
     padding: 10,

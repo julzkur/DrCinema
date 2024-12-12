@@ -40,10 +40,9 @@ private async refreshToken(): Promise<void> {
   async fetchData(endpoint: string): Promise<any> {
     try {
       const response: AxiosResponse<any> = await this.apiClient.get(endpoint);
-      console.log(response.data);
+
       return response.data;
       
-
     } catch (error) {
 
       if (axios.isAxiosError(error)) {

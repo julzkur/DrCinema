@@ -3,12 +3,10 @@ import { View, Text, Image, TouchableOpacity, Linking } from "react-native";
 import styles from "./styles";
 import CinemaModel from "@/app/models/cinema";
 
-interface CinemaDetailsProps {
-  cinema: CinemaModel;
-  navigation: any;
-}
 
-const CinemaDetail: React.FC<CinemaDetailsProps> = ({ cinema, navigation }) => {
+const CinemaDetail = ({ cinema, navigation }: {cinema: CinemaModel, navigation: any}) => {
+
+  console.log(cinema.id, cinema.name)
 
   return (
     <View style={styles.container}>
@@ -32,7 +30,7 @@ const CinemaDetail: React.FC<CinemaDetailsProps> = ({ cinema, navigation }) => {
       <View style={styles.webContainer}>
         <Image source={require('../../resources/webImgWhite.png')} style={styles.phoneAndAddressImage}></Image>
         {/* <Link style={styles.webLink} href={cinema.website}>Go To Website</Link> */}
-        <TouchableOpacity style={styles.webLink} onPress={() => Linking.openURL("https://withfra.me")} >{cinema.website}</TouchableOpacity>
+        <TouchableOpacity style={styles.webLink} onPress={() => Linking.openURL("https://withfra.me")} ><Text>{cinema.website}</Text></TouchableOpacity>
       </View>
     </View>
   );

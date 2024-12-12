@@ -2,12 +2,15 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import TrailerScreen from "../TrailerScreen";
+import UpcomingModel from "@/app/models/upcoming";
 
-const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
+const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: UpcomingModel }) => {
 
   const handlePress = () => {
-    navigation.navigate(TrailerScreen);
+    navigation.navigate("TrailerScreen");
   };
+
+  console.log(movie.title)
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
@@ -18,7 +21,7 @@ const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: any 
         <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">{movie.title || 'Unnamed Movie'}</Text>
       </View>
       <View style={styles.releaseDateContainer}>
-        <Text style={styles.ReleaseDate}>{movie.date}</Text>
+        <Text style={styles.ReleaseDate}>date not ready rip</Text>
       </View>
     </TouchableOpacity>
   );

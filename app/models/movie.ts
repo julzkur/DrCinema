@@ -1,5 +1,5 @@
 
-type Genre = {
+export type Genre = {
 ID: number;
 Name: string;
 NameEN: string;

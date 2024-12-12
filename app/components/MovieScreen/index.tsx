@@ -2,58 +2,61 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
 import PurchaseButton from "../PurchaseTicketButton";
+import MovieModel, { Genre } from "@/app/models/movie";
 
-const MovieScreen = ({ navigation }: { navigation: any }) => {
+const MovieScreen = ({ navigation, movie }: { navigation: any, movie: MovieModel}) => {
+
+  const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => genre.NameEN).join(', ') : 'No genres available';
+  console.log(movie)
+  
   return (
     <View style={styles.container}>
       {/* Movie Poster */}
       <View style={styles.imagecontainer}>
         <Image
-          source={require("../../resources/interstellar.jpeg")}
+          source={{uri: movie.poster}}
           style={styles.image}
         />
       </View>
 
       {/* Movie Name */}
       <View style={styles.nameContainer}>
-        <Text style={styles.name}>Movie Name</Text>
+        <Text style={styles.name}>{movie.title}</Text>
       </View>
 
       {/* Movie Plot */}
       <View style={styles.descriptionContainer}>
         <Text style={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          laboriosam eveniet, quisquam neque cum totam provident ea earum quasi
-          aut hic esse officia. Sed qui quia ratione mollitia iusto commodi.
+          {movie.plot}
         </Text>
       </View>
 
-      {/* Movie Duration */}
       <View style={styles.phoneAndAddressContainer}>
         <Image
           source={require("../../resources/calenderWhite2.png")}
           style={styles.phoneAndAddressImage}
         />
-        <Text style={styles.address}>Year of release: 2001</Text>
+        <Text style={styles.address}>Year of release: {movie.year}</Text>
       </View>
 
-      {/* Year of Release */}
+
       <View style={styles.phoneAndAddressContainer}>
         <Image
           source={require("../../resources/whiteClock.png")}
           style={styles.phoneAndAddressImage}
         />
-        <Text style={styles.phone}>Duration: 169 minutes</Text>
+        <Text style={styles.phone}>Duration: {movie.durationMinutes} minutes</Text>
       </View>
 
       {/* Genres */}
+      
       <View style={styles.genreContainer}>
-        <Text style={styles.phone}>Genre: Action</Text>
+        <Text style={styles.phone}>Genres: {genres}</Text>
       </View>
 
       {/* Purchase Ticket Button */}
       <View style={styles.buttonContainer}>
-        <PurchaseButton navigation={navigation} />
+        <PurchaseButton url={""} navigation={navigation} />
       </View>
     </View>
   );

@@ -1,7 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from './store';
+import AxiosAPI from './axiosAPI';
 import { MovieModel } from '../models/movie';  
+import axios from 'axios';
+import CinemaModel from '../models/cinema';
 
-const API_URL = 'https://api.kvikmyndir.is/movies';  
+const api = new AxiosAPI('https://api.kvikmyndir.is');
 
 interface Showtime {
   time: string;
@@ -15,7 +21,7 @@ interface Showtime {
 
 interface Movie {
   id: string;
-  name: string;
+  title: string;
   year: string;
   genres: string[];
   thumbnailphoto: string;
@@ -23,7 +29,7 @@ interface Movie {
 }
 
 interface MoviesState {
-  movies: Movie[];
+  movies: MovieModel[];
   loading: boolean;
   error: string | null;
 }
@@ -34,26 +40,31 @@ const initialState: MoviesState = {
   error: null,
 };
 
+export const useMovies = (cinema: CinemaModel) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { movies, loading, error } = useSelector((state: RootState) => state.movies);
+
+  useEffect(() => {
+    if (!loading && movies.length === 0) {
+      dispatch(fetchMovies());
+    }
+  }, [dispatch, loading, movies.length]);
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.showtimes.some((showtime) => showtime.cinema_name === cinema.name)
+  );
+
+  return { movies: filteredMovies, loading, error };
+};
+
 // Async thunk to fetch movies from the API
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async (token: string, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch(API_URL, {
-        method: 'GET',
-        headers: {
-          'x-access-token': token,
-          'Accept': 'application/json',
-        },
-      });
+      const data = await api.fetchData('/movies');
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch movies');
-      }
-
-      const data = await response.json();
-
-      const movies = data.map((movie: any) => {
+      const movies = data.flatMap((movie: any) => {
         const genres = movie.genres.map((genre: any) => ({
             ID: genre.ID,
             Name: genre.Name,
@@ -83,8 +94,12 @@ export const fetchMovies = createAsyncThunk(
       });
 
       return movies; 
+
     } catch (error) {
-      return rejectWithValue(error);
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data?.message || error.message || 'Unknown API error');
+      }
+      return rejectWithValue('An unexpected error occurred');
     }
   }
 );
@@ -105,7 +120,7 @@ const movieSlice = createSlice({
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || 'Failed to load movies';
       });
   },
 });

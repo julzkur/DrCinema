@@ -1,14 +1,11 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, Linking } from "react-native";
 import styles from "./styles";
 
-
-
-
-const PurchaseButton = ({ navigation }: { navigation: any }) => {
+const PurchaseButton = ({ url, navigation }: { navigation: any, url: any }) => {
 
   const handlePurchasePress = () => {
-    navigation.navigate("PurchaseScreen"); // Navigate to the Purchase screen
+    Linking.openURL(url)
   };
 
   return (

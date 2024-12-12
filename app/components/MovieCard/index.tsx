@@ -1,24 +1,15 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
+import MovieModel, { Genre } from "@/app/models/movie";
 import styles from "./styles";
 
-type Genre = {
-  ID: number;
-  Name: string;
-  NameEN: string;
-};
-
-const MovieCard = ({ navigation, movie }: { navigation: any, movie: any }) => {
+const MovieCard = ({ navigation, movie }: { navigation: any, movie: MovieModel }) => {
 
   const handlePress = () => {
-    navigation.navigate('MovieScreen');
+    navigation.navigate('MovieScreen', { movie });
   };
   
-
   const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => genre.NameEN).join(', ') : 'No genres available';
-  console.log(movie.genres);
-  console.log(movie.poster);
-  console.log(movie.year);
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>

@@ -65,8 +65,6 @@ export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, {
     const uniqueCinemas = Array.from(new Set(cinemas.map((cinema: any) => cinema.id)))
       .map((id) => cinemas.find((cinema: any) => cinema.id === id));
 
-    console.log('Mapped and Unique Cinemas:', uniqueCinemas);
-
     return uniqueCinemas; // return cinemas
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -90,8 +88,7 @@ const cinemaSlice = createSlice({
       })
       .addCase(fetchCinemas.fulfilled, (state, action) => {
         state.loading = false;
-        state.cinemas = action.payload;  
-        console.log('Cinemas in Redux State:', state.cinemas);
+        state.cinemas = action.payload;
       })
       
       .addCase(fetchCinemas.rejected, (state, action) => {
