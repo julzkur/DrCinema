@@ -5,7 +5,7 @@ import store from './redux/store';
 import type { AppDispatch, RootState } from './redux/store';
 import { useEffect } from "react";
 import { View } from "react-native";
-import { getMovies, getMovieById } from "./redux/features/moviesSlice";
+import { getMovies, getMovieByTitle } from "./redux/features/moviesSlice";
 
 const TestComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,7 +15,7 @@ const TestComponent = () => {
   });
   useEffect(() => {
     // dispatch(getMovies());
-    dispatch(getMovieById("Gladiator II"));
+    dispatch(getMovieByTitle("Gladiator II"));
   }, []);
 
   return (

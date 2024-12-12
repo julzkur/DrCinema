@@ -35,7 +35,7 @@ export const getMovies = () => {
   return async (dispatch:any) => {
     try {
       // dispatch(getMoviesLoading())
-      const response = await apiService.get(); // "/movies/"
+      const response = await apiService.fetchData("/movies/"); // "/movies/"
       dispatch(getAllMovies(response.data));
 
     }
@@ -45,7 +45,7 @@ export const getMovies = () => {
   }
 }
 
-export const getMovieById = (id:string) => {
+export const getMovieByTitle = (id:string) => {
   return async (dispatch:AppDispatch) => {
     try {
       // loading ?
