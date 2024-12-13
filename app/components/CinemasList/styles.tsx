@@ -17,10 +17,13 @@ export const styles = StyleSheet.create({
     letterSpacing: 5,
     marginTop: 10, 
     marginBottom: 5,
-    paddingLeft: 16,
+    textAlign: 'center',
   },
   UpcomingMoviesContainer: {
     flexDirection: 'column',
+  },
+  cinemasListContainer: {
+    paddingBottom: 60,
   }
 });
 

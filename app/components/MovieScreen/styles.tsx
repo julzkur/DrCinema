@@ -98,11 +98,28 @@ export const styles = StyleSheet.create({
     marginTop: 20, // Space between the content and the button
     alignItems: "center", // Center the button horizontally
   },
-  
-  
-  
-  
-  
+  showtimeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  showtimeText: {
+    fontSize: 16,
+    flex: 1,
+    color: 'white',
+  },
+  showtimeHeader: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Georgia',
+    color: 'white',
+    padding: 10,
+  },
+  showtimeContainer: {
+    padding: 10, // Adds space above the genre text
+  },
   
 });
 

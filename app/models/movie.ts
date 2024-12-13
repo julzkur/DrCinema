@@ -84,6 +84,7 @@ export class MovieModel {
       plot: this.plot,
       durationMinutes: this.durationMinutes,
       showtimes: this.showtimes,
+      trailers: this.trailers,
     };
   }
 }

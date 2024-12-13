@@ -10,7 +10,7 @@ const UpcomingMovieButton = ({ navigation }: { navigation: any; }) => {
   
   return (
     <TouchableOpacity style={styles.button} onPress={handlePress}>
-      <Text style={styles.buttonText}>Upcoming movies</Text>
+      <Text style={styles.buttonText}>Væntanlegt í bíó</Text>
     </TouchableOpacity>
   );
 };

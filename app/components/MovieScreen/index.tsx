@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, FlatList } from "react-native";
 import styles from "./styles";
 import PurchaseButton from "../PurchaseTicketButton";
 import MovieModel, { Genre } from "@/app/models/movie";
@@ -11,11 +11,13 @@ const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: Mo
   const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => 
     genre.NameEN).join(', ') : 'No genres available';
 
-  const showtimeForCinema = movie.showtimes.find((showtime) => 
-    showtime.cinema_name === cinema.name
+  const showtimesForCinema = movie.showtimes
+  .flatMap((showtime) => 
+    showtime.schedule.filter((schedule) => showtime.cinema_name === cinema.name)
   );
 
-  const purchaseUrl = showtimeForCinema?.schedule?.[0]?.purchase_url || null;
+  console.log(showtimesForCinema)
+
   
   return (
     <View style={styles.container}>
@@ -62,12 +64,27 @@ const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: Mo
         <Text style={styles.phone}>Genres: {genres}</Text>
       </View>
 
-      {/* Purchase Ticket Button */}
-      <View style={styles.buttonContainer}>
+      <View style={styles.showtimeContainer}>
+        <Text style={styles.showtimeHeader}>Showtimes:</Text>
+  
+          <FlatList
+            data={showtimesForCinema}
+            keyExtractor={(item) => item.time} 
+            renderItem={({ item }) => (
+              <View style={styles.showtimeRow}>
+                <Text style={styles.showtimeText}>{item.time} - {item.info}</Text>
+                <PurchaseButton url={item.purchase_url} />
+              </View>
+            )}
+            horizontal={false} //  make the list appear vertically
+          />
+        </View>
+
+        <View style={styles.buttonContainer}>
           <View style={styles.buttonContainer}>
-            <PurchaseButton url={purchaseUrl} navigation={navigation}/>
-          </View>
+        </View>
       </View>
+
     </View>
   );
 };

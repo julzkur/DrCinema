@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, Linking } from "react-native";
 import styles from "./styles";
 
-const PurchaseButton = ({ url, navigation }: { navigation: any, url: any }) => {
+const PurchaseButton = ({ url }: { url: any }) => {
 
   const handlePurchasePress = () => {
     Linking.openURL(url)
@@ -10,7 +10,7 @@ const PurchaseButton = ({ url, navigation }: { navigation: any, url: any }) => {
 
   return (
     <TouchableOpacity style={styles.button} onPress={handlePurchasePress}>
-      <Text style={styles.buttonText}>Purchase ticket</Text>
+      <Text style={styles.buttonText}>Kaupa miða</Text>
     </TouchableOpacity>
   );
 };
