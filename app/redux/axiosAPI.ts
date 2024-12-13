@@ -39,3 +39,5 @@ export async function createAxiosAPI(baseURL: string): Promise<AxiosAPI> {
   
   return new AxiosAPI(baseURL, token.token);
 }
+
+export default createAxiosAPI;

@@ -16,7 +16,7 @@ const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: Mo
     showtime.schedule.filter((schedule) => showtime.cinema_name === cinema.name)
   );
 
-  console.log(showtimesForCinema)
+  // console.log(showtimesForCinema)
 
   
   return (
