@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AxiosAPI from "./axiosAPI";
+import { createAxiosAPI } from "./axiosAPI";
 import { AppDispatch } from "../store";
 
-const apiService = new AxiosAPI('https://api.kvikmyndir.is/');
+
 
 export const movieSlice = createSlice({
   name: "movies",
@@ -35,6 +35,7 @@ export const getMovies = () => {
   return async (dispatch:any) => {
     try {
       // dispatch(getMoviesLoading())
+      const apiService = await createAxiosAPI('https://api.kvikmyndir.is/');
       const response = await apiService.fetchData("/movies/"); // "/movies/"
       dispatch(getAllMovies(response.data));
 
@@ -49,7 +50,8 @@ export const getMovieByTitle = (id:string) => {
   return async (dispatch:AppDispatch) => {
     try {
       // loading ?
-      const response = await apiService.fetchData(`/movies/?title=${id}`)// change this to movie by id lookup "/movies/"
+      const apiService = await createAxiosAPI('https://api.kvikmyndir.is/');
+      const response = await apiService.fetchData(`/movies/`)// change this to movie by id lookup "/movies/"
       console.log(response);
       dispatch(selectMovie(response.data));
     }

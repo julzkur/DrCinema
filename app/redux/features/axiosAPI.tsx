@@ -1,24 +1,24 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import TokenService from '@/app/services/GetToken';
 
-class AxiosAPI{
+class AxiosAPI {
   public apiClient: AxiosInstance;
-
-  constructor(baseURL: string) {
-    // Create an Axios instance
+  
+  constructor(baseURL: string, token: string) {
     this.apiClient = axios.create({
       baseURL,
       timeout: 1000,
       method: 'GET', 
       headers: {
-        'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzkyNDA5NCwiZXhwIjoxNzM0MDEwNDk0fQ.yYNC9cZq95j2coGgosg_KhSRUwiq0FyQwUnwPpjbRlE',
-        'Accept' : 'application/json',
+        'x-access-token': token,
+        'Accept': 'application/json',
       },
     });
   }
 
   async fetchData(endpoint: string): Promise<any> {
     try {
-      const response: AxiosResponse<any> = await this.apiClient.get<{ id: number; name: string }>(endpoint);
+      const response: AxiosResponse<any> = await this.apiClient.get(endpoint);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -30,5 +30,10 @@ class AxiosAPI{
   }
 }
 
-
-export default AxiosAPI;
+export async function createAxiosAPI(baseURL: string): Promise<AxiosAPI> {
+  const tokenService = new TokenService();
+  
+  const token = await tokenService.fetchToken();
+  console.log(token.token);
+  return new AxiosAPI(baseURL, token.token);
+}
