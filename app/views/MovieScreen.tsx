@@ -14,7 +14,7 @@ export const MovieScreenDisplay = ({ navigation, route }: any) => {
     <View style={styles.cinemasListContainer}>
       <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
         <Header navigation={navigation} showBackButton={true} />
-        <MovieScreen movie={movie}  navigation={navigation} cinema={cinema}/>
+        <MovieScreen movie={movie} cinema={cinema}/>
         <Footer navigation={navigation} />
       </ScrollView>
     </View>

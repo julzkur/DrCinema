@@ -5,7 +5,7 @@ import PurchaseButton from "../PurchaseTicketButton";
 import MovieModel, { Genre } from "@/app/models/movie";
 import CinemaModel from "@/app/models/cinema";
 
-const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: MovieModel, cinema: CinemaModel}) => {
+const MovieScreen = ({ movie, cinema }: { movie: MovieModel, cinema: CinemaModel}) => {
 
 
   const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => 

@@ -29,9 +29,12 @@ const CinemasList= ({ navigation}: any) => {
         </View>
         <Text style={styles.title}>Kvikmyndahús</Text>
         <View style={styles.cinemasListContainer}>
-        {cinemas.map((item) => (
-          <CinemaCard key={item.id} cinema={item} navigation={navigation} />
-        ))}
+        {cinemas
+          .slice() // Create a shallow copy of the array
+          .sort((a, b) => a.name.localeCompare(b.name)) // Sort
+          .map((item) => (
+            <CinemaCard key={item.id} cinema={item} navigation={navigation} />
+          ))}
         </View>
       </View>
   );
