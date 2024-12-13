@@ -35,7 +35,8 @@ export const useCinemas = () => {
 // Fetch cinemas from the API
 export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, { rejectWithValue }) => {
   try {
-    const data = await api.fetchData('/movies');
+    const data = await api.fetchData('/cinemas');
+    
 
     // Extract and map cinemas with necessary checks
     const cinemas = data.flatMap((movie: any) =>
