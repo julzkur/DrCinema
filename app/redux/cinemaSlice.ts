@@ -6,7 +6,7 @@ import { createAxiosAPI } from './axiosAPI';
 import { CinemaModel } from '../models/cinema';
 import axios from 'axios';
 
-const api = new AxiosAPI('https://api.kvikmyndir.is');
+
 
 
 interface CinemaState {
@@ -32,10 +32,13 @@ export const useCinemas = () => {
   return { cinemas, loading, error };
 };
 
+
+
 // Fetch cinemas from the API
 export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, { rejectWithValue }) => {
   try {
-    const data = await api.fetchData('/movies');
+    const api = await createAxiosAPI('https://api.kvikmyndir.is/');
+    const data = await api.fetchData('/movies'); 
 
     // Extract and map cinemas with necessary checks
     const cinemas = data.flatMap((movie: any) =>
