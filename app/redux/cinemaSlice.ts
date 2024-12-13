@@ -50,9 +50,7 @@ export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, {
     .replace(/<\/?b>/g, ''),
       googleMap: cinema.google_map || 'No Google Map link available',
     }));
-    cinemas.forEach((cinema:any) => {
-      console.log(cinema.city);
-    });
+    
 
     return cinemas; // return cinemas
   } catch (error) {

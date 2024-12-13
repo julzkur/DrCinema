@@ -16,7 +16,7 @@ export type RootStackParamList = {
     Cinema: {cinema: Cinema};
     UpcomingMovies: undefined;
     MovieScreen: {movie: MovieModel, cinema: CinemaModel};
-    TrailerScreen: undefined;
+    TrailerScreen: { trailerId: string | undefined };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

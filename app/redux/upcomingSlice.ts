@@ -46,12 +46,27 @@ export const fetchUpcomingMovies = createAsyncThunk(
           movie.title,
           movie.year,
           movie.poster,
-          movie['release-dateIS']
+          movie['release-dateIS'],
+          movie.trailers.map((trailer: any) => ({
+            id: trailer.id,
+            results: trailer.results.map((result: any) => ({
+              id: result.id,
+              iso_639_1: result.iso_639_1,
+              iso_3166_1: result.iso_3166_1,
+              key: result.key,
+              name: result.name,
+              site: result.site,
+              size: result.size,
+              type: result.type,
+            })),
+          }))
         );
-
         return movieModel.toObject();
       });
-
+      // cinemas.forEach((cinema:any) => {
+      //   console.log(cinema.city);
+      // });
+      
       return upcomingMovies; 
 
     } catch (error) {

@@ -7,9 +7,18 @@ import TrailerButton from "../TrailerButton";
 
 const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: UpcomingModel }) => {
 
-  const handlePress = () => {
-    navigation.navigate("TrailerScreen");
-  };
+  // const handlePress = () => {
+  //   navigation.navigate("TrailerScreen");
+  // };
+
+  let firstTrailerKey = movie.trailers.find((trailer: any) =>
+    trailer.results && trailer.results.length > 0 
+  )?.results[0]?.key;
+  
+  if (firstTrailerKey === undefined){
+    firstTrailerKey = "No trailer found";
+  }
+  
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -30,7 +39,7 @@ const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: Upco
           {movie.title || 'Unnamed Movie'}
         </Text>
         <Text style={styles.ReleaseDate}>{formatDate(movie.date)}</Text>
-        <TrailerButton navigation={navigation} />
+        <TrailerButton navigation={navigation} trailerId={firstTrailerKey} />
       </View>
     </View>
 
