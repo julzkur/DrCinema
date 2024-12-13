@@ -24,6 +24,11 @@ export const styles = StyleSheet.create({
   },
   cardWrapper: {
     marginBottom: 16,
+  },
+  noMovies: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center'
   }
 });
 

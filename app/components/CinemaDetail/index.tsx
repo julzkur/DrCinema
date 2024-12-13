@@ -4,9 +4,7 @@ import styles from "./styles";
 import CinemaModel from "@/app/models/cinema";
 
 
-const CinemaDetail = ({ cinema, navigation }: {cinema: CinemaModel, navigation: any}) => {
-
-  console.log(cinema.id, cinema.name)
+const CinemaDetail = ({ cinema }: {cinema: CinemaModel}) => {
 
   return (
     <View style={styles.container}>
@@ -25,12 +23,11 @@ const CinemaDetail = ({ cinema, navigation }: {cinema: CinemaModel, navigation: 
       </View>
       <View style={styles.phoneAndAddressContainer}>
         <Image source={require('../../resources/phoneWhite.png')} style={styles.phoneAndAddressImage}></Image>
-        <Text style={styles.phone}>{cinema.phoneNumber}</Text>
+        <Text style={styles.phone}>{cinema.phone}</Text>
       </View>
       <View style={styles.webContainer}>
         <Image source={require('../../resources/webImgWhite.png')} style={styles.phoneAndAddressImage}></Image>
-        {/* <Link style={styles.webLink} href={cinema.website}>Go To Website</Link> */}
-        <TouchableOpacity style={styles.webLink} onPress={() => Linking.openURL("https://withfra.me")} ><Text>{cinema.website}</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.webLink} onPress={() => Linking.openURL("https://withfra.me")} ><Text style={styles.webLink}>{cinema.website}</Text></TouchableOpacity>
       </View>
     </View>
   );

@@ -7,8 +7,6 @@ import { CinemaModel } from '../models/cinema';
 import axios from 'axios';
 
 
-
-
 interface CinemaState {
   cinemas: CinemaModel[];
   loading: boolean;
@@ -33,13 +31,12 @@ export const useCinemas = () => {
 };
 
 
-
 // Fetch cinemas from the API
 export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, { rejectWithValue }) => {
   try {
     const api = await createAxiosAPI('https://api.kvikmyndir.is/');
     const data = await api.fetchData('/theaters'); 
-    console.log(data.phone);
+
     
     const cinemas = data.map((cinema: any) => ({
       id: cinema.id,
@@ -48,25 +45,22 @@ export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, {
       city: cinema.city || 'City not available',
       phone: cinema.phone || 'Phone not available',
       website: cinema.website || 'Website not available',
-      description: (cinema.description || '')
-    .replace(/<br\s*\/?>/g, '\n') // Replace <br> tags with line breaks
+      description: (cinema.description || 'No description available')
+    .replace(/<br\s*\/?>/g, '') // replacing <br> tags 
     .replace(/<\/?b>/g, ''),
       googleMap: cinema.google_map || 'No Google Map link available',
     }));
 
 
-    
-
     return cinemas; // return cinemas
   } catch (error) {
-    console.error('Error while fetching cinemas:', error); // Add this
+    console.error('Error while fetching cinemas:', error); 
     if (axios.isAxiosError(error)) {
       return rejectWithValue(error.response?.data?.message || error.message || 'Unknown API error');
     }
     return rejectWithValue('An unexpected error occurred');
   }
 });
-
   
 
 const cinemaSlice = createSlice({

@@ -8,13 +8,13 @@ import styles from "./styles";
 
 export const MovieScreenDisplay = ({ navigation, route }: any) => {
 
-  const { movie } = route.params;
+  const { movie, cinema } = route.params;
 
   return (
     <View style={styles.cinemasListContainer}>
       <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
         <Header navigation={navigation} showBackButton={true} />
-        <MovieScreen movie={movie} navigation={navigation} />
+        <MovieScreen movie={movie}  navigation={navigation} cinema={cinema}/>
         <Footer navigation={navigation} />
       </ScrollView>
     </View>

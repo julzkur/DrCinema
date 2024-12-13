@@ -10,7 +10,6 @@ export class TokenService {
     });
     
     const token = await response.json();
-    // console.log(`Here is the token response: ${token}`);
     return token;
   }
 }

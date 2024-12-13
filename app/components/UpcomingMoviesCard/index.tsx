@@ -10,8 +10,6 @@ const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: Upco
     navigation.navigate("TrailerScreen");
   };
 
-  console.log(movie.title)
-
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
       <View style={styles.thumbnailContainer} >

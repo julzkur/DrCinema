@@ -2,11 +2,12 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import MovieModel, { Genre } from "@/app/models/movie";
 import styles from "./styles";
+import CinemaModel from "@/app/models/cinema";
 
-const MovieCard = ({ navigation, movie }: { navigation: any, movie: MovieModel }) => {
+const MovieCard = ({ navigation, movie, cinema }: { navigation: any, movie: MovieModel, cinema: CinemaModel }) => {
 
   const handlePress = () => {
-    navigation.navigate('MovieScreen', { movie });
+    navigation.navigate('MovieScreen', { movie, cinema});
   };
   
   const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => genre.NameEN).join(', ') : 'No genres available';

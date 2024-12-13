@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CinemasListView from '../views/CinemasList';
 import CinemasDetailView from '../views/CinemasDetail';
-import Cinema from '../models/cinema';
+import Cinema, { CinemaModel } from '../models/cinema';
 import MovieModel from '../models/movie';
 import UpcomingMoviesView from '../views/UpcomingMovies';
 import MovieScreen from '../components/MovieScreen';
@@ -15,7 +15,7 @@ export type RootStackParamList = {
     CinemasList: undefined;
     Cinema: {cinema: Cinema};
     UpcomingMovies: undefined;
-    MovieScreen: {movie: MovieModel};
+    MovieScreen: {movie: MovieModel, cinema: CinemaModel};
     TrailerScreen: undefined;
 };
 

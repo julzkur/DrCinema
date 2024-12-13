@@ -9,7 +9,6 @@ import UpcomingMovieButton from "../UpcomingMoviesButton";
 const CinemasList= ({ navigation}: any) => {
 
   const { cinemas, loading, error } = useCinemas();
-  console.log(cinemas)
 
   if (loading) {
     // maybe add component for loading screen

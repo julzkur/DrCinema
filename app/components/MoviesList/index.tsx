@@ -4,9 +4,11 @@ import { useMovies } from '@/app/redux/movieSlice';
 import styles from "./styles";
 import MovieCard from "../MovieCard";
 import MovieModel from "@/app/models/movie";
+import CinemaModel from "@/app/models/cinema";
 
-const MoviesList = ({ navigation, cinema }: { navigation: any; cinema: any }) => {
+const MoviesList = ({ navigation, cinema }: { navigation: any; cinema: CinemaModel }) => {
   const { movies, loading, error } = useMovies(cinema);
+
 
   if (loading) {
     return (
@@ -24,15 +26,23 @@ const MoviesList = ({ navigation, cinema }: { navigation: any; cinema: any }) =>
     );
   }
 
+  if (movies.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.noMovies}> Engar myndir eins og er </Text>
+      </View>
+    );
+  }
+
   return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Movies shown in this cinema</Text>
+          <Text style={styles.title}>Myndir sýndar í {cinema.name}</Text>
         </View>
         <View style={styles.cardContainer}>
           {movies.map((item: MovieModel) => (
           <View style={styles.cardWrapper} key={item.id}>
-            <MovieCard movie={item} navigation={navigation} />
+            <MovieCard movie={item} cinema={cinema} navigation={navigation} />
           </View>
           ))}
         </View>

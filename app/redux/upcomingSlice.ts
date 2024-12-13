@@ -2,11 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from './store';
-import AxiosAPI from './axiosAPI';
+import {createAxiosAPI} from './axiosAPI';
 import axios from 'axios';
 import UpcomingModel from '../models/upcoming';
-
-const api = new AxiosAPI('https://api.kvikmyndir.is');
 
 interface upcomingMoviesState {
   upcomingMovies: UpcomingModel[];
@@ -38,6 +36,7 @@ export const fetchUpcomingMovies = createAsyncThunk(
   'upcoming/fetchUpcomingMovies',
   async (_, { rejectWithValue }) => {
     try {
+      const api = await createAxiosAPI('https://api.kvikmyndir.is/');
       const data = await api.fetchData('/upcoming');
       console.log(data);
 
@@ -78,7 +77,7 @@ const upcomingMovieSlice = createSlice({
       })
       .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
         state.loading = false;
-        state.upcomingMovies = action.payload;  // Store the fetched movies
+        state.upcomingMovies = action.payload; 
       })
       .addCase(fetchUpcomingMovies.rejected, (state, action) => {
         state.loading = false;

@@ -3,11 +3,19 @@ import { View, Text, Image } from "react-native";
 import styles from "./styles";
 import PurchaseButton from "../PurchaseTicketButton";
 import MovieModel, { Genre } from "@/app/models/movie";
+import CinemaModel from "@/app/models/cinema";
 
-const MovieScreen = ({ navigation, movie }: { navigation: any, movie: MovieModel}) => {
+const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: MovieModel, cinema: CinemaModel}) => {
 
-  const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => genre.NameEN).join(', ') : 'No genres available';
-  console.log(movie)
+
+  const genres = movie.genres?.length > 0 ? movie.genres.map((genre: Genre) => 
+    genre.NameEN).join(', ') : 'No genres available';
+
+  const showtimeForCinema = movie.showtimes.find((showtime) => 
+    showtime.cinema_name === cinema.name
+  );
+
+  const purchaseUrl = showtimeForCinema?.schedule?.[0]?.purchase_url || null;
   
   return (
     <View style={styles.container}>
@@ -56,7 +64,9 @@ const MovieScreen = ({ navigation, movie }: { navigation: any, movie: MovieModel
 
       {/* Purchase Ticket Button */}
       <View style={styles.buttonContainer}>
-        <PurchaseButton url={""} navigation={navigation} />
+          <View style={styles.buttonContainer}>
+            <PurchaseButton url={purchaseUrl} navigation={navigation}/>
+          </View>
       </View>
     </View>
   );

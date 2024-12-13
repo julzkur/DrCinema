@@ -40,7 +40,7 @@ export class MovieModel {
     genres: Genre[],
     thumbnail: string = "",
     poster: string = "",
-    plot: string,
+    plot: string = "No plot available",
     durationMinutes: string,
     showtimes: {
         cinema_name: string;
