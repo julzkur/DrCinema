@@ -18,7 +18,7 @@ const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: any 
         <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">{movie.title || 'Unnamed Movie'}</Text>
       </View>
       <View style={styles.releaseDateContainer}>
-        <Text style={styles.ReleaseDate}>{movie.date}</Text>
+        <Text style={styles.ReleaseDate}>{movie.year}</Text>
       </View>
     </TouchableOpacity>
   );

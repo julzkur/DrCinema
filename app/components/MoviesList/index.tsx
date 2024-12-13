@@ -16,7 +16,7 @@ const MoviesList = ({ navigation, cinema }: { navigation: any; cinema: any }) =>
   useEffect(() => {
     if (loading === false && movies.length === 0) {
       const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzg3NDI1MCwiZXhwIjoxNzMzOTYwNjUwfQ.w7DNbCJ1ox41HfUHWhTLixBj8xlrDjSlPmYCQGfjVik'; // Use your token
-      dispatch(fetchMovies(token));
+      dispatch(fetchMovies());
     }
   }, [dispatch, loading, movies.length]);
 

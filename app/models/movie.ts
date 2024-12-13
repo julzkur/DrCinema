@@ -19,6 +19,19 @@ export class MovieModel {
         cinema_name: string;
         schedule: { time: string; purchase_url: string; info: string }[];
       }[];
+    trailers: {
+      id: string;
+      results: {
+        id: string;
+        iso_639_1: string;
+        iso_3166_1: string;
+        key: string;
+        name: string;
+        site: string;
+        size: string;
+        type: string;
+      }[];
+    }[];
 
   constructor(
     id: string,
@@ -33,6 +46,20 @@ export class MovieModel {
         cinema_name: string;
         schedule: { time: string; purchase_url: string; info: string }[];
       }[],
+    trailers: {
+      id: string,
+      results: {
+        id: string,
+        iso_639_1: string,
+        iso_3166_1: string,
+        key: string,
+        name: string,
+        site: string,
+        size: string,
+        type: string
+      }[]
+
+    }[]
   ) {
     this.id = id;
     this.title = title;
@@ -43,6 +70,7 @@ export class MovieModel {
     this.plot = plot;
     this.durationMinutes = durationMinutes;
     this.showtimes = showtimes;
+    this.trailers = trailers
   }
 
   toObject() {

@@ -38,7 +38,7 @@ const initialState: MoviesState = {
 // Async thunk to fetch movies from the API
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async (token: string, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const api = await createAxiosAPI('https://api.kvikmyndir.is/');
       const data = await api.fetchData('/movies'); 
@@ -65,6 +65,19 @@ export const fetchMovies = createAsyncThunk(
               time: schedule.time,
               purchase_url: schedule.purchase_url,
               info: schedule.info,
+            })),
+          })),
+          movie.trailers.map((trailer: any) => ({
+            id: trailer.id,
+            results: trailer.results.map((result: any) => ({
+              id: result.id,
+              iso_639_1: result.iso_639_1,
+              iso_3166_1: result.iso_3166_1,
+              key: result.key,
+              name: result.name,
+              site: result.site,
+              size: result.size,
+              type: result.type,
             })),
           }))
         );

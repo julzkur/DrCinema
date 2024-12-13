@@ -11,15 +11,14 @@ import movie from "@/app/models/movie"; //Need to change to upcoming movies
 const UpcomingMoviesList : React.FC<{ navigation: any }> = ({ navigation }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { movies, loading, error } = useSelector((state: RootState) => state.movies);
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3NTZlZjQzYWE2MjRlOTNlZTkyNDlhMiIsImlhdCI6MTczMzg3NDI1MCwiZXhwIjoxNzMzOTYwNjUwfQ.w7DNbCJ1ox41HfUHWhTLixBj8xlrDjSlPmYCQGfjVik";  // Hardcode the token here
+  
   console.log('Movies from Redux:', movies); // Need to change to upcoming movies
 
   useEffect(() => {
-    console.log('Token:', token);
-    if (token) {
-      dispatch(fetchMovies(token)); // Pass token to the fetchCinemas action  need to change ot upcoming movies
-    }
-  }, [dispatch, token]);
+     
+    dispatch(fetchMovies()); // Pass token to the fetchCinemas action  need to change to upcoming movies
+    
+  }, [dispatch]);
 
   if (loading) {
     return <Text>Loading movies...</Text>;
@@ -37,7 +36,7 @@ const UpcomingMoviesList : React.FC<{ navigation: any }> = ({ navigation }) => {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               console.log('Rendering MovieCard for:', item);
-              return <UpcomingMovieCard navigation={navigation} movie={movie} /> // Need to change to upcoming movie
+              return <UpcomingMovieCard navigation={navigation} movie={item} /> // Need to change to upcoming movie
             }}
         />
       </View>
