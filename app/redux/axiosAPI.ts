@@ -36,6 +36,6 @@ export async function createAxiosAPI(baseURL: string): Promise<AxiosAPI> {
   const tokenService = new TokenService();
   
   const token = await tokenService.fetchToken();
-  console.log(token.token);
+  
   return new AxiosAPI(baseURL, token.token);
 }

@@ -11,7 +11,7 @@ export const TrailerScreenView = ({ navigation }: any) => {
     <View style={styles.cinemasListContainer}>
       <ScrollView contentContainerStyle={styles.cinemaDScrollContainer}>
         <Header navigation={navigation} showBackButton={true} />
-        <TrailerScreen navigation={navigation} />
+        <TrailerScreen />
         <Footer navigation={navigation} />
       </ScrollView>
     </View>

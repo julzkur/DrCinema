@@ -12,7 +12,7 @@ const CinemaCard = ({cinema, navigation}: {navigation: any, cinema: CinemaModel}
 
     const handleWebsitePress = () => {
         if (cinema.website) {
-          Linking.openURL(cinema.website).catch((err) =>
+          Linking.openURL(`https://${cinema.website}`).catch((err) =>
             console.error('Failed to open URL: ', err)
           );
         } else {
@@ -25,7 +25,7 @@ const CinemaCard = ({cinema, navigation}: {navigation: any, cinema: CinemaModel}
             <View style={styles.cinemaItem}>
                 <Text style={styles.name}>{cinema.name}</Text>
             </View>
-                <TouchableOpacity style={styles.websiteButton} onPress={() => handleWebsitePress}>
+                <TouchableOpacity style={styles.websiteButton} onPress={() => handleWebsitePress()}>
                     <Image source={require('../../resources/webImgWhite.png')} style={styles.webImage}></Image>
                     <Text style={styles.website}>{cinema.website}</Text>
                 </TouchableOpacity>
