@@ -3,6 +3,7 @@ import { View, Image, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import TrailerScreen from "../TrailerScreen";
 import UpcomingModel from "@/app/models/upcoming";
+import TrailerButton from "../TrailerButton";
 
 const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: UpcomingModel }) => {
 
@@ -20,17 +21,19 @@ const UpcomingMovieCard = ({ navigation, movie }: { navigation: any, movie: Upco
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.thumbnailContainer} >
         <Image source={{uri: movie.poster}} style={styles.thumbnail} />
       </View>
-      <View style={styles.nameContainer}>
-        <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">{movie.title || 'Unnamed Movie'}</Text>
-      </View>
-      <View style={styles.releaseDateContainer}>
+      <View style={styles.infoContainer}>
+        <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
+          {movie.title || 'Unnamed Movie'}
+        </Text>
         <Text style={styles.ReleaseDate}>{formatDate(movie.date)}</Text>
+        <TrailerButton navigation={navigation} />
       </View>
-    </TouchableOpacity>
+    </View>
+
   );
 };
 

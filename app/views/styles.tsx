@@ -5,6 +5,13 @@ const styles = StyleSheet.create({
       flex: 1, 
       backgroundColor: "#343a40", 
     },
+    contentContainer: {
+      flexGrow: 1,
+      padding: 10,
+      backgroundColor: '#343a40',
+      justifyContent: "space-between",
+      paddingBottom: 60,
+    },
     cinemaDetailContainer: {
       flex: 1,
       backgroundColor: "#343a40",
@@ -22,6 +29,13 @@ const styles = StyleSheet.create({
     noCinemaText: {
       color: "white",
       fontSize: 16,
+    },
+    title: {
+      color: 'white',
+      fontSize: 24,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      margin: 10,
     },
 });
 

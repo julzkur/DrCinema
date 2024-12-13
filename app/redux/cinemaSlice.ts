@@ -41,11 +41,11 @@ export const fetchCinemas = createAsyncThunk('cinemas/fetchCinemas', async (_, {
     const cinemas = data.map((cinema: any) => ({
       id: cinema.id,
       name: cinema.name,
-      address: cinema['address\t'] || 'Address not available', // Fixing the extra tab character
+      address: cinema['address\t'] || 'Address not available', 
       city: cinema.city || 'City not available',
       phone: cinema.phone || 'Phone not available',
       website: cinema.website || 'Website not available',
-      description: (cinema.description || 'No description available')
+      description: (cinema.description || 'Engin lýsing komin...')
     .replace(/<br\s*\/?>/g, '') // replacing <br> tags 
     .replace(/<\/?b>/g, ''),
       googleMap: cinema.google_map || 'No Google Map link available',

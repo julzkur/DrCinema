@@ -3,34 +3,37 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#6C757D',
-    height: 200,
-    width: 160,
+    height: 130,
     borderRadius: 10,
-    flexDirection: 'column',
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 10,
+    marginVertical: 20,
   },
   thumbnailContainer: {
-    flex: 4,
-    width: '100%',
-    height: 70,
-    alignItems: 'center',
+
     borderRadius: 10,
+    width: 130,
   },
   thumbnail: {
-    width: '100%',
-    height: '100%',
+    width: 130,
+    height: 130,
     alignItems: 'center',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
+  infoContainer: {
+    flex: 1,  
+    flexDirection: 'column',  
+    padding: 10,
+  },
   nameContainer: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 7,
-    paddingLeft: 5,
-    paddingRight: 5,
+    marginVertical: 5,
   },
   name: {
-    fontSize: 14,
+    fontSize: 20,
     color: 'white',
     fontFamily: 'Arial',
     fontWeight: 'bold'
@@ -38,11 +41,10 @@ const styles = StyleSheet.create({
   releaseDateContainer: {
     flex: 1,
     alignItems: 'center',
-    paddingLeft: 5,
-    paddingRight: 5,
+
   },
   ReleaseDate: {
-    fontSize: 14,
+    fontSize: 16,
     color: 'white',
     fontFamily: 'Arial'
   }

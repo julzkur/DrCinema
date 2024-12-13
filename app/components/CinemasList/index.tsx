@@ -29,13 +29,9 @@ const CinemasList= ({ navigation}: any) => {
         </View>
         <Text style={styles.title}>Kvikmyndahús</Text>
         <View style={styles.cinemasListContainer}>
-          <FlatList
-            data={cinemas}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              return <CinemaCard cinema={item} navigation={navigation} />
-            }}
-          />
+        {cinemas.map((item) => (
+          <CinemaCard key={item.id} cinema={item} navigation={navigation} />
+        ))}
         </View>
       </View>
   );

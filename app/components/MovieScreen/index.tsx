@@ -46,7 +46,7 @@ const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: Mo
           source={require("../../resources/calenderWhite2.png")}
           style={styles.phoneAndAddressImage}
         />
-        <Text style={styles.address}>Year of release: {movie.year}</Text>
+        <Text style={styles.address}>Útgáfuár: {movie.year}</Text>
       </View>
 
 
@@ -55,35 +55,30 @@ const MovieScreen = ({ navigation, movie, cinema }: { navigation: any, movie: Mo
           source={require("../../resources/whiteClock.png")}
           style={styles.phoneAndAddressImage}
         />
-        <Text style={styles.phone}>Duration: {movie.durationMinutes} minutes</Text>
+        <Text style={styles.phone}>Lengd: {movie.durationMinutes} mín</Text>
       </View>
 
       {/* Genres */}
       
       <View style={styles.genreContainer}>
-        <Text style={styles.phone}>Genres: {genres}</Text>
+        <Text style={styles.phone}>Tegundir: {genres}</Text>
       </View>
 
       <View style={styles.showtimeContainer}>
-        <Text style={styles.showtimeHeader}>Showtimes:</Text>
-  
-          <FlatList
-            data={showtimesForCinema}
-            keyExtractor={(item) => item.time} 
-            renderItem={({ item }) => (
-              <View style={styles.showtimeRow}>
-                <Text style={styles.showtimeText}>{item.time} - {item.info}</Text>
-                <PurchaseButton url={item.purchase_url} />
-              </View>
-            )}
-            horizontal={false} //  make the list appear vertically
-          />
-        </View>
+  <Text style={styles.showtimeHeader}>Sýningar</Text>
 
-        <View style={styles.buttonContainer}>
-          <View style={styles.buttonContainer}>
-        </View>
+  <View>
+    {showtimesForCinema.map((item) => (
+      <View key={item.time} style={styles.showtimeRow}>
+        <Text style={styles.showtimeText}>
+          {item.time} - {item.info}
+        </Text>
+        <PurchaseButton url={item.purchase_url} />
       </View>
+    ))}
+  </View>
+</View>
+
 
     </View>
   );

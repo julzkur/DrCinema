@@ -28,15 +28,14 @@ const UpcomingMoviesList = ({ navigation }: { navigation: any}) => {
   );
 
   return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Movies</Text>
-          <FlatList
-            data={sortedMovies}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              return <UpcomingMovieCard navigation={navigation} movie={item} />
-            }}
-        />
+      
+      <View style={styles.container}>  
+        <Text style={styles.title}>Væntanlegar Myndir</Text>
+        <View style={styles.cardContainer}>
+          {sortedMovies.map((item) => (
+            <UpcomingMovieCard key={item.id} navigation={navigation} movie={item} />
+          ))}
+        </View>
       </View>
   );
 };

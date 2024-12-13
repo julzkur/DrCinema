@@ -5,26 +5,26 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#343a40",
     padding: 10,
+    paddingBottom: 60,
   },
   cardContainer: {
     flexGrow: 1,
-    flexDirection: 'row',
     padding: 10,
     backgroundColor: '#343a40',
-    flexWrap: "wrap",
     justifyContent: "space-between",
+    paddingBottom: 60,
   },
   title: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+
   },
   titleContainer: {
     padding: 10
   },
-  cardWrapper: {
-    marginBottom: 16,
-  }
+
 });
 
 export default styles;
