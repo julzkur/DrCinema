@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { MovieModel } from '../models/movie';  
+import { createAxiosAPI } from './axiosAPI';
 
-const API_URL = 'https://api.kvikmyndir.is/movies';  
+
 
 interface Showtime {
   time: string;
@@ -39,19 +40,8 @@ export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (token: string, { rejectWithValue }) => {
     try {
-      const response = await fetch(API_URL, {
-        method: 'GET',
-        headers: {
-          'x-access-token': token,
-          'Accept': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch movies');
-      }
-
-      const data = await response.json();
+      const api = await createAxiosAPI('https://api.kvikmyndir.is/');
+      const data = await api.fetchData('/movies'); 
 
       const movies = data.map((movie: any) => {
         const genres = movie.genres.map((genre: any) => ({
