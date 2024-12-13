@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from './store';
 import { MovieModel } from '../models/movie';  
 import { createAxiosAPI } from './axiosAPI';
+import axios from 'axios';
 import CinemaModel from '../models/cinema';
 
 
