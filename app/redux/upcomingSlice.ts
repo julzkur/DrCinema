@@ -31,18 +31,6 @@ export const useUpcomingMovies = () => {
   return { upcomingMovies, loading, error };
 };
 
-const parseAndFormatDate = (dateString: string) => {
-  const date = new Date(dateString);  // Parse the date string
-  const formattedDate = new Intl.DateTimeFormat('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-  }).format(date);
-
-  return formattedDate;
-};
-
-
 // Async thunk to fetch movies from the API
 export const fetchUpcomingMovies = createAsyncThunk(
   'upcoming/fetchUpcomingMovies',
@@ -50,20 +38,15 @@ export const fetchUpcomingMovies = createAsyncThunk(
     try {
       const api = await createAxiosAPI('https://api.kvikmyndir.is/');
       const data = await api.fetchData('/upcoming');
-      console.log(data);
-
-      
 
       const upcomingMovies = data.flatMap((movie: any) => {
-
-        const formattedDate = parseAndFormatDate(movie['release-dateIS']);
         
         const movieModel = new UpcomingModel(
           movie.id,
           movie.title,
           movie.year,
           movie.poster,
-          formattedDate,
+          movie['release-dateIS']
         );
 
         return movieModel.toObject();

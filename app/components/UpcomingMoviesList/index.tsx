@@ -23,11 +23,15 @@ const UpcomingMoviesList = ({ navigation }: { navigation: any}) => {
     );
   }
 
+  const sortedMovies = [...upcomingMovies].sort((a, b) =>
+    new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
   return (
       <View style={styles.container}>
         <Text style={styles.title}>Movies</Text>
           <FlatList
-            data={upcomingMovies}
+            data={sortedMovies}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return <UpcomingMovieCard navigation={navigation} movie={item} />
