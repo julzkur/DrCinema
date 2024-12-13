@@ -7,7 +7,6 @@ import { useUpcomingMovies } from "@/app/redux/upcomingSlice";
 
 const UpcomingMoviesList = ({ navigation }: { navigation: any}) => {
   const { upcomingMovies, loading, error} = useUpcomingMovies();
-  
   if (loading) {
     return (
       <View style={styles.container}>

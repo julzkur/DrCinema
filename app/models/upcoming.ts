@@ -11,17 +11,20 @@ export class UpcomingModel {
     title: string;
     year: string;
     poster: string;
+    date: string;
 
     constructor(
     id: string,
     title: string,
     year: string,
     poster: string = "",
+    date: string,
     ) {
     this.id = id;
     this.title = title;
     this.year = year;
     this.poster = poster;
+    this.date = date;
     }
 
     toObject() {
@@ -30,6 +33,7 @@ export class UpcomingModel {
         title: this.title,
         year: this.year,
         poster: this.poster,
+        date: this.date,
     };
     }
 }
