@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from './store';
-import AxiosAPI from './axiosAPI';
+import { createAxiosAPI } from './axiosAPI';
 import { CinemaModel } from '../models/cinema';
 import axios from 'axios';
 
