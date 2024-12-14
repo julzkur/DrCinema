@@ -3,8 +3,8 @@
 
 ## Description
 
-Dr. Cinema is an application designed to display movies that are currently playing in cinemas.
-The app allows users to brows through cinemas and see what movies they are playing and allows the users to brows through upcoming movies and watch their trailers when they have one.
+Dr. Cinema is an application designed to display movied that are currently playing in cinemas.
+The app allows users to browse through cinemas and see what movies each of them are playing, see the deatails and showtimes of each movie at the corresponding cinema and buy tickets for each showtime. The user can also browse through upcoming movies and watch their trailers if they have one.
 It supports both iOS and Android platforms.
 
 This is for iOS/Android, not supported by Web.
@@ -42,7 +42,7 @@ npm install
 To run the application, use the following command:
 
 ```bash
-npx expo start
+npm start 
 ```
 
 This will start the Expo development server.
@@ -65,11 +65,7 @@ If you experience issues from the get-go, analyze the error and try running thes
 
 npm install @react-navigation/native
 
-npx expo install expo-file-system
-
 npm install @react-navigation/stack
-
-npx expo install expo-file-system
 
 npm install -g expo-cli
 
@@ -89,10 +85,10 @@ npm install react-native-dotenv
     React Native
     React Navigation
     React Youtube iframe
+    Redux
+    Axios
     Expo Router
-    Expo FileSystem
-    eslint
-    Jest
+    api.kvikmyndir.is
 
 ## Platform Support
 
